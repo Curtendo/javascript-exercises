@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const people = [
+        //     {
+        //         name: "Carly",
+        //         yearOfBirth: 1942,
+        //         yearOfDeath: 1970,
+        //     },
+        //     {
+        //         name: "Ray",
+        //         yearOfBirth: 1962,
+        //         yearOfDeath: 2011,
+        //     },
+        //     {
+        //         name: "Jane",
+        //         yearOfBirth: 1912,
+        //         yearOfDeath: 1941,
+        //     },
+        // ]
+
+        const people = [
+            {
+                name: "Carly",
+                yearOfBirth: 2018,
+            },
+            {
+                name: "Ray",
+                yearOfBirth: 1962,
+                yearOfDeath: 2011,
+            },
+            {
+                name: "Jane",
+                yearOfBirth: 1912,
+                yearOfDeath: 1941,
+            },
+        ]
+
+        console.table(people.map(person => ({ ...person })));
+
+        people.forEach(person => {
+            if (!person.yearOfDeath) {
+                const date = new Date();
+                const currentYear = date.getFullYear();
+                person.yearOfDeath = currentYear;
+            }
+        });
+        console.table(people.map(person => ({ ...person })));
+
+        people.sort((a, b) => {
+            let aAge = a.yearOfDeath - a.yearOfBirth;
+            let bAge = b.yearOfDeath - b.yearOfBirth;
+            return aAge > bAge ? -1 : 1;
+        });
+        console.table(people.map(person => ({ ...person })));
+    </script>
+</body>
+</html>
